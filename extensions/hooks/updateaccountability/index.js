@@ -1,0 +1,1 @@
+var o=({filter:o})=>{o("items.read",(async(o,l,{accountability:e})=>{var n;return console.log("[HOOK] context: ",l),console.log("[HOOK] Accountability: ",e),console.log("[Hook] Accountability user: ",null==e?void 0:e.user,null==(n=null==e?void 0:e.user)?void 0:n.name),o}))};export{o as default};
