@@ -81,10 +81,12 @@ function parseDynamicVariable(value, accountability, context) {
     }
 
     // TEAM FIX
-    if (value === '$CURRENT_ORGANISATION')
-        return (accountability === null || accountability === void 0 ? void 0 : accountability.organisation) || null;
-    if (value === '$CURRENT_ORGANISATION_ROLE')
-        return (accountability === null || accountability === void 0 ? void 0 : accountability.organisation_role) || null;     
+    if (value === '$CURRENT_ACCOUNT')
+        return (accountability === null || accountability === void 0 ? void 0 : accountability.account_id) || null;
+    if (value === '$CURRENT_ACCOUNT_ROLE')
+        return (accountability === null || accountability === void 0 ? void 0 : accountability.membership_entry?.role) || null;
+    if (value === '$CURRENT_MEMBERSHIP')
+        return (accountability === null || accountability === void 0 ? void 0 : accountability.membership_entry) || null;     
 }
 function get(object, path, defaultValue) {
     const [key, ...follow] = path.split('.');
