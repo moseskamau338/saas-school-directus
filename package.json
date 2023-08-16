@@ -7,7 +7,7 @@
   },
   "type": "module",
   "dependencies": {
-    "mysql": "^2.18.1",
-    "sqlite3": "^5.1.6"
+    "jsonwebtoken": "^9.0.1",
+    "pg": "^8.11.2"
   }
 }
