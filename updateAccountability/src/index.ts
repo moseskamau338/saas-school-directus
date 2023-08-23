@@ -1,9 +1,10 @@
 import { defineHook } from '@directus/extensions-sdk';
 import { BaseException } from "@directus/shared/exceptions";
+// @ts-ignore
 import jwt from "jsonwebtoken";
 
 export default defineHook(({ filter }, {database}) => {
-	filter("authenticate", async (accountability, { req }) => {
+	filter("authenticate", async (accountability: any, { req }) => {
 
 		async function getMembership(id: string){
 			return await database
@@ -52,10 +53,9 @@ export default defineHook(({ filter }, {database}) => {
 
 		if (token && decodedToken) {
 			// continue with existing user
-
 			// if is admin and app access, pass
 				// else: update accountability
-			if (!decodedToken.admin_access && decodedToken.app_access && decodedToken.role !== 'ec1c2da0-5edb-45a3-89ca-52d420adc80a') 
+			if (!decodedToken.admin_access && decodedToken.role !== 'ec1c2da0-5edb-45a3-89ca-52d420adc80a')
 			{
 				//user is ! admin	
 				if (req?.headers?.membership_id && await getMembership(req?.headers?.membership_id)) 
@@ -76,7 +76,6 @@ export default defineHook(({ filter }, {database}) => {
 					
 				}else{
 					throw new BaseException("Membership ID required", 401, "INVALID_CREDENTIALS");
-					
 				}
 
 			}
